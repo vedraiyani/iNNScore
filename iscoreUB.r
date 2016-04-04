@@ -8,7 +8,7 @@
 # @return cosine similarity
 #
 
-scoreIB <- function(u,i,k){
+iscoreUB <- function(u,i,k){
   
   #TODO: check user,item and rating_matrix exists
   
