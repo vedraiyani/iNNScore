@@ -10,7 +10,7 @@
 cos_sim <- function(v1,v2){
   
   #check length
-  if(length(v1)!=length(v2)){
+  if(is.vector(v1)&&is.vector(v2)&&length(v1)!=length(v2)){
     return (-1);
   }
   
@@ -18,8 +18,8 @@ cos_sim <- function(v1,v2){
   index=1:length(v1);
   corated_index=intersect(index[v1!=0],index[v2!=0]);
   
-  corated_v1=a[corated_index];
-  corated_v2=b[corated_index];
+  corated_v1=v1[corated_index];
+  corated_v2=v2[corated_index];
   
   #counts dotproduct of vectors
   dot=sum(corated_v1*corated_v2);
@@ -29,7 +29,10 @@ cos_sim <- function(v1,v2){
   corated_v2_val=sqrt(sum(corated_v2^2));
   
   #count cos inverse
-  arc_cos=dot/(corated_v1_val*corated_v2_val);
+  arc_cos=0;
+  if(corated_v1_val!=0&&corated_v2_val!=0){
+    arc_cos=dot/(corated_v1_val*corated_v2_val);
+  }
   
   return (arc_cos);
 }
